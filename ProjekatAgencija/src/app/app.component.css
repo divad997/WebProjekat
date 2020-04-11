@@ -1,0 +1,10 @@
+:host{
+    background: aqua;
+}
+#container img{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+  }
+
+  
