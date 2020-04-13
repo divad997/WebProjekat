@@ -3,6 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AircompanyComponent } from './aircompany/aircompany.component';
+import { RentacarserviceComponent } from './rentacarservice/rentacarservice.component';
+import { AircompanylistComponent } from './aircompanylist/aircompanylist.component';
+import { RentacarlistComponent } from './rentacarlist/rentacarlist.component';
 
 const routes: Routes = [
   {
@@ -16,6 +20,20 @@ const routes: Routes = [
   {
     path : "register",
     component: RegisterComponent
+  },
+  {
+    path : "aircompanylist",
+    children: [
+      { path: "", component: AircompanylistComponent },
+      { path: ":aircompany", component: AircompanyComponent }
+    ]
+  },
+  {
+    path : "rentacarlist",
+    children: [
+      { path: "", component: RentacarlistComponent },
+      { path: ":rentacar", component: RentacarserviceComponent }
+    ]
   }
 ];
 
