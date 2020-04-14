@@ -18,123 +18,18 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="cell" data-title="Rent-a-car Service">
-                            Rent Serbia
+                    <div class="row" *ngFor="let item of allRents">
+                        <div class="cell" data-title="Air Company">
+                            {{item.name}}
                         </div>
                         <div class="cell" data-title="Address">
-                            Belgrade
+                            {{item.address}}
                         </div>
                         <div class="cell" data-title="Rating">
-                            5
+                            {{item.rating}}
                         </div>
-                        <div class="cell" data-title="Locations">
-                            Washington
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="cell" data-title="Rent-a-car Service">
-                            Rent Serbia
-                        </div>
-                        <div class="cell" data-title="Address">
-                            Belgrade
-                        </div>
-                        <div class="cell" data-title="Rating">
-                            5
-                        </div>
-                        <div class="cell" data-title="Locations">
-                            Somerville, MA
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="cell" data-title="Rent-a-car Service">
-                            Rent Serbia
-                        </div>
-                        <div class="cell" data-title="Address">
-                            Belgrade
-                        </div>
-                        <div class="cell" data-title="Rating">
-                            5
-                        </div>
-                        <div class="cell" data-title="Locations">
-                            Los Angeles
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="cell" data-title="Rent-a-car Service">
-                            Rent Serbia
-                        </div>
-                        <div class="cell" data-title="Address">
-                            Belgrade
-                        </div>
-                        <div class="cell" data-title="Rating">
-                            5
-                        </div>
-                        <div class="cell" data-title="Locations">
-                            San Francisco
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="cell" data-title="Rent-a-car Service">
-                            Rent Serbia
-                        </div>
-                        <div class="cell" data-title="Address">
-                            Belgrade
-                        </div>
-                        <div class="cell" data-title="Rating">
-                            5
-                        </div>
-                        <div class="cell" data-title="Locations">
-                            New York, NY
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="cell" data-title="Rent-a-car Service">
-                            Rent Serbia
-                        </div>
-                        <div class="cell" data-title="Address">
-                            Belgrade
-                        </div>
-                        <div class="cell" data-title="Rating">
-                            5
-                        </div>
-                        <div class="cell" data-title="Locations">
-                            New York
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="cell" data-title="Rent-a-car Service">
-                            Rent Serbia
-                        </div>
-                        <div class="cell" data-title="Address">
-                            Belgrade
-                        </div>
-                        <div class="cell" data-title="Rating">
-                            5
-                        </div>
-                        <div class="cell" data-title="Locations">
-                            Washington
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="cell" data-title="Rent-a-car Service">
-                            Rent Serbia
-                        </div>
-                        <div class="cell" data-title="Address">
-                            Belgrade
-                        </div>
-                        <div class="cell" data-title="Rating">
-                            5
-                        </div>
-                        <div class="cell" data-title="Locations">
-                            Somerville, MA
+                        <div class="cell" data-title="Destination">
+                            {{item.cars}}
                         </div>
                     </div>
 

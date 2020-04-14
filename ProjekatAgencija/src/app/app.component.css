@@ -10,7 +10,7 @@
   
   
 #container img{
-    position: fixed;
+    position: absolute;
     top: 0px;
     left: 0px;
     cursor: pointer;
@@ -29,7 +29,7 @@ h1 {
 }
 
 button {
-    background-color: #2288bb; /* Green */
+    background-color: #2288bb; 
     border: none;
     color: white;
     padding: 15px 32px;

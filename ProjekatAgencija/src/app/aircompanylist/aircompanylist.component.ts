@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AirserviceService } from '../services/airservice/airservice.service';
+import { AirCompany } from '../entities/aircompany/aircompany';
 
 @Component({
   selector: 'app-aircompanylist',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AircompanylistComponent implements OnInit {
 
-  constructor() { }
+  allCompanies: Array<AirCompany>;
+
+  constructor(private airService: AirserviceService) {
+    this.allCompanies = this.airService.loadCompanies();
+   }
 
   ngOnInit(): void {
+
+
   }
 
 }

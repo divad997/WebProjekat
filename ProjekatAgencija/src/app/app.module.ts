@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
-import { AircompanyComponent } from './aircompany/aircompany.component';
 import { RentacarserviceComponent } from './rentacarservice/rentacarservice.component';
 import { AircompanylistComponent } from './aircompanylist/aircompanylist.component';
 import { RentacarlistComponent } from './rentacarlist/rentacarlist.component';
+import { AirdetailsComponent } from './airdetails/airdetails.component';
 
 
 @NgModule({
@@ -16,10 +16,10 @@ import { RentacarlistComponent } from './rentacarlist/rentacarlist.component';
     AppComponent,
     ProfileComponent,
     RegisterComponent,
-    AircompanyComponent,
     RentacarserviceComponent,
     AircompanylistComponent,
-    RentacarlistComponent
+    RentacarlistComponent,
+    AirdetailsComponent
   ],
   imports: [
     BrowserModule,

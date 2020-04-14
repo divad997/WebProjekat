@@ -104,6 +104,9 @@ iframe {
   width: 100%;
   display: table;
   margin: 0;
+  position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 @media screen and (max-width: 768px) {
@@ -207,7 +210,7 @@ iframe {
 }
 
 .row:hover {
-  background-color: #ececff;
+  background-color: #b1b1b1;
   cursor: pointer;
 }
 

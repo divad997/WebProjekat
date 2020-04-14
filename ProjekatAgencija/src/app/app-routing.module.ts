@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AircompanyComponent } from './aircompany/aircompany.component';
 import { RentacarserviceComponent } from './rentacarservice/rentacarservice.component';
 import { AircompanylistComponent } from './aircompanylist/aircompanylist.component';
 import { RentacarlistComponent } from './rentacarlist/rentacarlist.component';
+import { AirdetailsComponent } from './airdetails/airdetails.component';
 
 const routes: Routes = [
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
     path : "aircompanylist",
     children: [
       { path: "", component: AircompanylistComponent },
-      { path: ":aircompany", component: AircompanyComponent }
+      { path: ":airdetails", component: AirdetailsComponent }
     ]
   },
   {
