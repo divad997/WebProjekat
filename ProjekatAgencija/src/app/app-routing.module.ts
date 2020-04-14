@@ -25,14 +25,14 @@ const routes: Routes = [
     path : "aircompanylist",
     children: [
       { path: "", component: AircompanylistComponent },
-      { path: ":airdetails", component: AirdetailsComponent }
+      { path: ":id/details", component: AirdetailsComponent }
     ]
   },
   {
     path : "rentacarlist",
     children: [
       { path: "", component: RentacarlistComponent },
-      { path: ":rentacar", component: RentacarserviceComponent }
+      { path: ":id/details", component: RentacarserviceComponent }
     ]
   }
 ];

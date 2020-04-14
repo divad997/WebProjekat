@@ -18,7 +18,7 @@
                         </div>
                     </div>
 
-                    <div class="row" *ngFor="let item of allRents">
+                    <div class="row" *ngFor="let item of allRents" routerLink="/rentacarlist/{{item.name}}/details">
                         <div class="cell" data-title="Air Company">
                             {{item.name}}
                         </div>
