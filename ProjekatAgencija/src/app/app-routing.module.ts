@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { RentacarserviceComponent } from './rentacarservice/rentacarservice.component';
+import { RentacardetailsComponent } from './rentacardetails/rentacardetails.component';
 import { AircompanylistComponent } from './aircompanylist/aircompanylist.component';
 import { RentacarlistComponent } from './rentacarlist/rentacarlist.component';
 import { AirdetailsComponent } from './airdetails/airdetails.component';
@@ -32,7 +32,7 @@ const routes: Routes = [
     path : "rentacarlist",
     children: [
       { path: "", component: RentacarlistComponent },
-      { path: ":id/details", component: RentacarserviceComponent }
+      { path: ":id/details", component: RentacardetailsComponent }
     ]
   }
 ];
