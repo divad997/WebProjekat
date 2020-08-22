@@ -28,7 +28,7 @@ namespace ProjekatDB.Controllers
         // GET: api/Users/5
         [Route("GetUserDetailsById/{userId}")]
         [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        public async Task<Object> GetUser(int id)
         {
             User user = db.Users.Find(id);
             if (user == null)
@@ -42,7 +42,7 @@ namespace ProjekatDB.Controllers
         // PUT: api/Users/5
         [Route("UpdateUserDetails")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public async Task<Object> PutUser(int id, User user)
         {
             if (!ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace ProjekatDB.Controllers
         // DELETE: api/Users/5
         [Route("DeleteUserDetails")]
         [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
+        public async Task<Object> DeleteUser(int id)
         {
             User user = db.Users.Find(id);
             if (user == null)
