@@ -12,7 +12,7 @@
                             Address
                         </div>
                         <div class="cell">
-                            Rating
+                            About
                         </div>
                         <div class="cell">
                             Destination
@@ -21,16 +21,16 @@
 
                     <div class="row" *ngFor="let item of allCompanies" routerLink="/aircompanylist/{{item.name}}/details">
                         <div class="cell" data-title="Air Company">
-                            {{item.name}}
+                            {{item.Name}}
                         </div>
                         <div class="cell" data-title="Address">
-                            {{item.address}}
+                            {{item.Address}}
                         </div>
-                        <div class="cell" data-title="Rating">
-                            {{item.rating}}
+                        <div class="cell" data-title="About">
+                            {{item.About}}
                         </div>
                         <div class="cell" data-title="Destination">
-                            {{item.destinations}}
+                            {{item.Destinations}}
                         </div>
                     </div>
 

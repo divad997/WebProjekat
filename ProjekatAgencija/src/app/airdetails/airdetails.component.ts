@@ -12,7 +12,7 @@ export class AirdetailsComponent implements OnInit {
   allCompanies: Array<AirCompany>;
 
   constructor(private airService: AirserviceService) {
-    this.allCompanies = this.airService.loadCompanies();
+    
    }
 
   ngOnInit(): void {

@@ -12,12 +12,21 @@ export class AircompanylistComponent implements OnInit {
   allCompanies: Array<AirCompany>;
 
   constructor(private airService: AirserviceService) {
-    this.allCompanies = this.airService.loadCompanies();
+    
    }
 
   ngOnInit(): void {
 
+    this.loadAllAC();
+  }
 
+  loadAllAC() {  
+    this.airService.getAllAC().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.allCompanies = res as Array<AirCompany>;
+      }
+    );
   }
 
 }

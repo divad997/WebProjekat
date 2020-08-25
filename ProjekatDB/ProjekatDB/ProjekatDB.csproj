@@ -168,11 +168,30 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AirController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AirCompany.cs">
+      <DependentUpon>AirModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AirModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AirModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AirModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
@@ -203,6 +222,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\AirModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AirModel.edmx</DependentUpon>
+      <LastGenOutput>AirModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AirModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AirModel.edmx</DependentUpon>
+      <LastGenOutput>AirModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\UserModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>UserModel.Context.cs</LastGenOutput>
@@ -240,6 +269,13 @@
     </EntityDeploy>
     <Content Include="Models\UserModel.edmx.diagram">
       <DependentUpon>UserModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\AirModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AirModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AirModel.edmx.diagram">
+      <DependentUpon>AirModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

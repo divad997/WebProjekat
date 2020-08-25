@@ -30,7 +30,7 @@ export class UserserviceService {
   }  
   deleteUserById(id: number) {  
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
-    return this.http.delete(this.url + '/DeleteEmployeeDetails?id=' +id,  
+    return this.http.delete(this.url + '/DeleteUserDetails?id=' +id,  
  httpOptions);  
   } 
 }
