@@ -7,25 +7,23 @@ using System.Threading.Tasks;
 
 namespace DBProjekat.Models
 {
-    public class User
+    public class AirCompany
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Username { get; set; }
-        [Required]
-        public string Email { get; set; }
-        [Required]
-        public string Password { get; set; }
-        [Required]
         public string Name { get; set; }
         [Required]
-        public string LastName { get; set; }
+        public string Address {get; set; }
         [Required]
-        public string City { get; set; }
+        public string About { get; set; }
         [Required]
-        public string PhoneNumber { get; set; }
+        public string Prices { get; set;  }
         [Required]
-        public string Role { get; set; }
+        public List<Destination> Destionations { get; set; }
+        [Required]
+        public List<Flight> Flights { get; set; }
+        [Required]
+        public List<Rating> Ratings { get; set; }
     }
 }
