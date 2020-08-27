@@ -1,12 +1,10 @@
 <div id="sc-edprofile">
     <h1>Register</h1>
     <div class="sc-container">
-      <button (click)="loadAllUsers()">IDEMOOOOOOOOO</button>
       <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
         <input formControlName="Username" type="text" placeholder="Username" />
         <input formControlName="Email" type="text" placeholder="Email Address" />
         <input formControlName="Password" type="password" placeholder="Password" />
-        <input formControlName="ConfirmPassword" type="password" placeholder="Confirm Password" />
         <input formControlName="Name" type="text" placeholder="First Name" />
         <input formControlName="LastName" type="text" placeholder="Last Name" />
         <input formControlName="City" type="text" placeholder="City" />

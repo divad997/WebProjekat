@@ -11,6 +11,7 @@ import { AircompanylistComponent } from './aircompanylist/aircompanylist.compone
 import { RentacarlistComponent } from './rentacarlist/rentacarlist.component';
 import { AirdetailsComponent } from './airdetails/airdetails.component';
 import { RentacardetailsComponent } from './rentacardetails/rentacardetails.component';
+import { UserserviceService } from './services/userservice/userservice.service';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { RentacardetailsComponent } from './rentacardetails/rentacardetails.comp
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

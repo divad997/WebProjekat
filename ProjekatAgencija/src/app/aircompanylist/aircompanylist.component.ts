@@ -25,6 +25,9 @@ export class AircompanylistComponent implements OnInit {
       (res: any) => {
         console.log(res);
         this.allCompanies = res as Array<AirCompany>;
+      },
+      err => {
+        console.log(err);
       }
     );
   }

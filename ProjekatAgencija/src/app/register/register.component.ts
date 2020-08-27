@@ -33,27 +33,38 @@ export class RegisterComponent implements OnInit {
     //this.loadAllUsers();
   }
 
-  loadAllUsers() {  
+  /*loadAllUsers() {  
     this.userService.getAllUsers().subscribe(
       (res: any) => {
         console.log(res);
       }
     );
-  }
+  }*/
   onFormSubmit()
   {
     console.log('submit');
     this.newUser = <User> this.userForm.value;
     console.log(this.newUser instanceof User);
     console.log(this.newUser);
+    this.newUser.Id = 0;
+    this.newUser.Role = 'User';
 
-    this.userService.createUser(this.newUser).subscribe(  
+    this.userService.postUser(this.newUser).subscribe(
+      res => {
+        this.userForm.reset();
+      },
+      err => {
+        console.log(err);
+      }
+    )
+
+    /*this.userService.createUser(this.newUser).subscribe(  
       (res: any) => {   
         console.log(res)
-        this.loadAllUsers();   
+        //this.loadAllUsers();   
         this.userForm.reset();  
       }  
-    );
+    );*/
   }
 
 }

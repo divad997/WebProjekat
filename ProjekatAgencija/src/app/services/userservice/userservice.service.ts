@@ -10,9 +10,13 @@ import { User } from 'src/app/entities/user';
 })
 export class UserserviceService {
 
-  url = 'http://localhost:60615/Api/User';  
-  constructor(private http: HttpClient) { }  
-  getAllUsers(){  
+  url = 'http://localhost:50370/api';  
+  constructor(private http: HttpClient) { }
+  
+  postUser(formData:User){
+   return this.http.post(this.url + '/Users', formData);
+  }
+  /*getAllUsers(){  
     return this.http.get(this.url + '/AllUserDetails');  
   }  
   getUserById(Id: number){  
@@ -32,5 +36,5 @@ export class UserserviceService {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
     return this.http.delete(this.url + '/DeleteUserDetails?id=' +id,  
  httpOptions);  
-  } 
+  }*/ 
 }
