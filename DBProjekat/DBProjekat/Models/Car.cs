@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace DBProjekat.Models
 {
-    public class Rating
+    public class Car
     {
         [Key]
         public int Id { get; set; }
-        
-        public AirCompany AirCompany { get; set; }
-
+        [Required]
+        public string Car1 { get; set; }
+        [Required]
+        public List<Rating> Rating { get; set; }
+        [Required]
         public RentCompany RentCompany { get; set; }
-        
-        public Car Car { get; set; }
     }
 }

@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace DBProjekat.Models
 {
-    public class Rating
+    public class Location
     {
         [Key]
         public int Id { get; set; }
-        
-        public AirCompany AirCompany { get; set; }
-
+        [Required]
+        public string Location1 { get; set; }
+        [Required]
         public RentCompany RentCompany { get; set; }
-        
-        public Car Car { get; set; }
     }
 }
