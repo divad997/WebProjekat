@@ -9,28 +9,11 @@ import { AirCompany } from 'src/app/entities/aircompany/aircompany';
 })
 export class AirserviceService {
 
-  url = 'http://localhost:60615/Api/Air';  
-  constructor(private http: HttpClient) { }  
-  getAllAC(){  
-    return this.http.get(this.url + '/AllAirDetails');  
-  }  
-  getACById(Id: number){  
-    return this.http.get(this.url + '/GetAirDetailsById/' + Id);  
-  }  
-  createAC(user: AirCompany) {  
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
-    return this.http.post(this.url + '/InsertAirDetails/',  
-    user, httpOptions);  
-  }  
-  updateAC(ac: AirCompany) {  
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
-    return this.http.put(this.url + '/UpdateAirDetails/',  
-    ac, httpOptions);  
-  }  
-  deleteACById(id: number) {  
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
-    return this.http.delete(this.url + '/DeleteAirDetails?id=' +id,  
- httpOptions);  
-  } 
+  url = 'http://localhost:50370/api';  
+  constructor(private http: HttpClient) { } 
 
+  getAirCompanies()
+  {
+    return this.http.get(this.url + '/AirCompanies');
+  }
 }

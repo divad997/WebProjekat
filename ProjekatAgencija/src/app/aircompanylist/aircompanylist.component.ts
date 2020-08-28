@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AirserviceService } from '../services/airservice/airservice.service';
-import { AirCompany } from '../entities/aircompany/aircompany';
+import { AirCompany, Destination } from '../entities/aircompany/aircompany';
 
 @Component({
   selector: 'app-aircompanylist',
@@ -10,6 +10,7 @@ import { AirCompany } from '../entities/aircompany/aircompany';
 export class AircompanylistComponent implements OnInit {
 
   allCompanies: Array<AirCompany>;
+  destin: Array<Destination>;
 
   constructor(private airService: AirserviceService) {
     
@@ -21,10 +22,12 @@ export class AircompanylistComponent implements OnInit {
   }
 
   loadAllAC() {  
-    this.airService.getAllAC().subscribe(
+    this.airService.getAirCompanies().subscribe(
       (res: any) => {
         console.log(res);
         this.allCompanies = res as Array<AirCompany>;
+        this.destin = this.allCompanies[1].Destinations;
+        console.log(this.destin);
       },
       err => {
         console.log(err);

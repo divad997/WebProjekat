@@ -10,6 +10,9 @@ namespace DBProjekat.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        public string Rating1 { get; set; }
         
         public AirCompany AirCompany { get; set; }
 

@@ -12,7 +12,6 @@ namespace DBProjekat.Models
         public int Id { get; set; }
         [Required]
         public string Destination1 { get; set; }
-        [Required]
         public AirCompany AirCompany { get; set; }
 
        

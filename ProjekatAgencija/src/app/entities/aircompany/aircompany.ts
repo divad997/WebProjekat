@@ -17,9 +17,8 @@ export class AirCompany {
 export class Destination{
     Id: number;
     Destination1: string;
-    AirCompanyId: number;
 
-    AirCompany: AirCompany;
+    //AirCompany: AirCompany;
 
     public constructor(init?: Partial<Destination>) {
         Object.assign(this, init);
@@ -33,8 +32,6 @@ export class Flight{
     TakeoffTime: Date;
     FlightLength: number;
     TicketPrice: number;
-    AirCompanyId: number;
-    AirCompany: AirCompany;
     Ratings: Array<Rating>;  
 
     public constructor(init?: Partial<Flight>) {
@@ -45,10 +42,6 @@ export class Flight{
 export class Rating{
     Id: number;
     Rating1: number;
-    AirCompanyId: number;
-    FlightId: number;
-    AirCompany: AirCompany;
-    Flight: Flight;
 
     public constructor(init?: Partial<Rating>) {
         Object.assign(this, init);
