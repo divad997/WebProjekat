@@ -20,7 +20,7 @@ namespace DBProjekat.Models
         [Required]
         public string Prices { get; set;  }
         [Required]
-        public List<Destination> Destionations { get; set; }
+        public List<Destination> Destinations { get; set; }
         [Required]
         public List<Flight> Flights { get; set; }
         [Required]
