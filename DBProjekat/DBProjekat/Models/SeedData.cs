@@ -29,6 +29,7 @@ namespace DBProjekat.Models
                             Ratings = new List<Rating>()
 
                         },
+                   
 
                         new AirCompany
                         {
@@ -41,10 +42,122 @@ namespace DBProjekat.Models
                             Prices = "1200",
                             Ratings = new List<Rating>()
 
+                        },
+
+
+
+                        new AirCompany
+                        {
+
+                            Name = "Qatar Airways",
+                            Address = "www.qatarairways.com",
+                            About = "Qatar is the state-owned flag carrier of Qatar",
+                            Destinations = new List<Destination>(),
+                            Flights = new List<Flight>(),
+                            Prices = "1200",
+                            Ratings = new List<Rating>()
+
+                        },
+
+                        new AirCompany
+                        {
+
+                            Name = "British Airways",
+                            Address = "www.britishairways.com",
+                            About = "British Airways is the flag carrier of the UK",
+                            Destinations = new List<Destination>(),
+                            Flights = new List<Flight>(),
+                            Prices = "1200",
+                            Ratings = new List<Rating>()
+
+                        },
+
+                        new AirCompany
+                        {
+
+                            Name = "Air France",
+                            Address = "www.britishairways.com",
+                            About = "Air France is the flag carrier of France",
+                            Destinations = new List<Destination>(),
+                            Flights = new List<Flight>(),
+                            Prices = "1200",
+                            Ratings = new List<Rating>()
+
                         }
+
+
+
+
+
+
                      );
-                    context.SaveChanges();
+                    
+
                 }
+                else if (!context.RentCompanies.Any())
+                {
+                    context.AddRange(
+
+                        new RentCompany
+                        {
+                            Name = "Enterprise",
+                            Address = "www.enterprise.com",
+                            Cars = new List<Car>(),
+                            Description = "There are almost 6,000 locations across the U.S.",
+                            Locations = new List<Location>(),
+                            Prices = "1200"
+
+                        },
+
+                        new RentCompany
+                        {
+                            Name = "National",
+                            Address = "www.nationalcar.com",
+                            Cars = new List<Car>(),
+                            Description = "A huge variety of vehicles to rent.",
+                            Locations = new List<Location>(),
+                            Prices = "1200"
+
+                        },
+
+                        new RentCompany
+                        {
+                            Name = "Alamo",
+                            Address = "www.alamo.com",
+                            Cars = new List<Car>(),
+                            Description = "A favorite with millennials.",
+                            Locations = new List<Location>(),
+                            Prices = "1200"
+
+                        },
+
+                        new RentCompany
+                        {
+                            Name = "Budget",
+                            Address = "www.budget.com",
+                            Cars = new List<Car>(),
+                            Description = "Some of the cheapest car rentals in the industry.",
+                            Locations = new List<Location>(),
+                            Prices = "1200"
+
+                        },
+
+                        new RentCompany
+                        {
+                            Name = "Avis",
+                            Address = "www.avis.com",
+                            Cars = new List<Car>(),
+                            Description = "Good for companies",
+                            Locations = new List<Location>(),
+                            Prices = "1200"
+
+                        }
+
+                        
+                    );
+                    
+                }
+                context.SaveChanges();
             }
         }
     }
