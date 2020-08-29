@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Rentacar } from '../entities/rentacar/rentacar';
+import {  RentCompany } from '../entities/rentacar/rentacar';
 import { CarserviceService } from '../services/carservice/carservice.service';
 
 @Component({
@@ -9,13 +9,28 @@ import { CarserviceService } from '../services/carservice/carservice.service';
 })
 export class RentacarlistComponent implements OnInit {
 
-  allRents: Array<Rentacar>;
+  allCompanies: Array<RentCompany>;
+  
 
   constructor(private carService: CarserviceService) {
-    this.allRents = this.carService.loadCompanies();
+    
    }
 
   ngOnInit(): void {
+
+    this.loadAllRC();
+  }
+
+  loadAllRC() {  
+    this.carService.getRentCompanies().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.allCompanies = res as Array<RentCompany>;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }

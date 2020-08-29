@@ -13,7 +13,7 @@ namespace DBProjekat.Models
         [Required]
         public string Car1 { get; set; }
         [Required]
-        public List<Rating> Rating { get; set; }
+        public List<Rating> Ratings { get; set; }
         [Required]
         public RentCompany RentCompany { get; set; }
     }

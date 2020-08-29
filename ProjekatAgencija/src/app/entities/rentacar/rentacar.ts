@@ -1,16 +1,52 @@
-export class Rentacar {
+export class RentCompany {
    
-    name: string;
-    address: string;
-    rating: number;
-    cars: Array<string>;
-    description: string;
+    Id: number;
+    Name: string;
+    Address: string;
+    Cars: Array<Car>;
+    Prices: string;
+    Description: string;
+    Locations: Array<Location>;
+    
+    Ratings: Array<Rating>;  
 
-    constructor(name: string, address: string, rating: number, cars: Array<string>){
-        this.name = name;
-        this.address = address;
-        this.rating = rating;
-        this.cars = cars;
-        this.description = 'asd'
+    public constructor(init?: Partial<RentCompany>) {
+        Object.assign(this, init);
+    }
+
+}
+
+
+export class Car
+{
+    Id: number;
+    Car1: string;
+    Ratings: Array<Rating>;
+    
+
+    public constructor(init?: Partial<Car>) {
+        Object.assign(this, init);
+    }
+
+}
+
+export class Rating{
+    Id: number;
+    Rating1: number;
+
+    public constructor(init?: Partial<Rating>) {
+        Object.assign(this, init);
+    }
+}
+
+export class Location
+{
+    Lid: number;
+    Location1: string;
+    RentCompanyId: number;
+    RentCompany: RentCompany;
+
+    public constructor(init?: Partial<Location>) {
+        Object.assign(this, init);
     }
 }

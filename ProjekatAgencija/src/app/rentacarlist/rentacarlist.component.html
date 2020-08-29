@@ -14,22 +14,28 @@
                             Rating
                         </div>
                         <div class="cell">
-                            Locations
+                            Prices
+                        </div>
+                        <div class="cell">
+                            Description
                         </div>
                     </div>
 
-                    <div class="row" *ngFor="let item of allRents" routerLink="/rentacarlist/{{item.name}}/details">
-                        <div class="cell" data-title="Air Company">
-                            {{item.name}}
+                    <div class="row" *ngFor="let item of allCompanies" routerLink="/rentacarlist/{{item.Name}}/details">
+                        <div class="cell" data-title="Rent Company">
+                            {{item.Name}}
                         </div>
                         <div class="cell" data-title="Address">
-                            {{item.address}}
+                            {{item.Address}}
                         </div>
                         <div class="cell" data-title="Rating">
-                            {{item.rating}}
+                            {{item.Rating}}
                         </div>
-                        <div class="cell" data-title="Destination">
-                            {{item.cars}}
+                        <div class="cell" data-title="Prices">
+                            {{item.Price}}
+                        </div>
+                        <div class="cell" data-title="Description">
+                            {{item.Description}}
                         </div>
                     </div>
 

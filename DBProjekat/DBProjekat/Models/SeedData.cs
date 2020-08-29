@@ -14,6 +14,7 @@ namespace DBProjekat.Models
         {
             using (var context = new AgencyContext(serviceProvider.GetRequiredService<DbContextOptions<AgencyContext>>()))
             {
+                
                 if(!context.AirCompanies.Any())
                 {
                     context.AirCompanies.AddRange(
@@ -96,7 +97,7 @@ namespace DBProjekat.Models
                 }
                 else if (!context.RentCompanies.Any())
                 {
-                    context.AddRange(
+                    context.RentCompanies.AddRange(
 
                         new RentCompany
                         {
@@ -157,6 +158,25 @@ namespace DBProjekat.Models
                     );
                     
                 }
+
+               /* else if (!context.Locations.Any())
+                {
+                    context.Locations.AddRange(
+
+                        new Location
+                        {
+                           
+                            Location1 = "Proba 23",
+                            RentCompanyId = 1,
+                            
+                           
+                        }
+
+                        
+
+                    );
+                    context.SaveChanges();
+                }*/
                 context.SaveChanges();
             }
         }
