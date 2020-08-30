@@ -1,0 +1,50 @@
+<table style="position: relative;">
+    <tr>
+        <td>
+            <label>Destination from:</label>
+        </td>
+        <td>
+            <select id="destfrom">
+                <option *ngFor="let dest of Company.Destinations" value="{{dest.Destination1}}">{{dest.Destination1}}</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Destination to:</label>
+        </td>
+        <td>
+            <select id="destto">
+                <option *ngFor="let dest of Company.Destinations" value="{{dest.Destination1}}">{{dest.Destination1}}</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Date</label>
+        </td>
+        <td>
+            <input type="date" id="date"/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button (click)="onBookClick()">Book</button>
+        </td>       
+    </tr>
+</table>
+<table style="position: relative;" border="1">
+    <tr >
+        <th>Destination From</th>
+        <th>Destination To</th>
+        <th>Date</th>
+    </tr>
+    <tr *ngFor="let fl of flights">
+        <td>{{fl.DestinationFrom}}</td>
+        <td>{{fl.DestinationTo}}</td>
+        <td>{{fl.TakeoffDate | date: 'mediumDate'}}</td>
+        <td>
+            <button id="{{fl.Id}}" (click)="reserveFlight($event, fl)">Reserve</button>
+        </td>
+    </tr>
+</table>

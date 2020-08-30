@@ -22,13 +22,52 @@ namespace DBProjekat.Controllers
         }
 
         // GET: api/AirCompanies
+        [Route("GetAirCompanies")]
         [HttpGet]
         public IEnumerable<AirCompany> GetAirCompanies()
         {
+            List<AirCompany> acl = _context.AirCompanies.ToList();
+            List<Destination> dl = _context.Destination.ToList();
+            //List<Rating> rl = _context.Rating.ToList();
+            List<Flight> fl = _context.Flight.ToList();
+
             return _context.AirCompanies;
         }
 
+        [Route("SearchByDestination")]
+        [HttpPost]
+        public List<AirCompany> SearchByDestination(PostModel model)
+        {
+            List<AirCompany> acl = _context.AirCompanies.ToList();
+            List<Destination> dl = _context.Destination.ToList();
+            //List<Rating> rl = _context.Rating.ToList();
+            List<Flight> fl = _context.Flight.ToList();
+
+            List<AirCompany> searchedAC = new List<AirCompany>();
+
+            foreach (var item in acl)
+            {
+                if (item.Flights == null)
+                {
+                    continue;
+                }
+                else
+                {
+                    foreach (var item1 in item.Flights)
+                    {
+                        if (item1.DestinationFrom == model.DestinationFrom && item1.DestinationTo == model.DestinationTo)
+                        {
+                            searchedAC.Add(item);
+                        }
+                    }
+                }                
+            }
+
+            return searchedAC;
+        }
+
         // GET: api/AirCompanies/5
+        [Route("GetAirCompany")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAirCompany([FromRoute] int id)
         {
@@ -95,6 +134,82 @@ namespace DBProjekat.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAirCompany", new { id = airCompany.Id }, airCompany);
+        }
+
+        [HttpPost]
+        [Route("ACById")]
+        public async Task<IActionResult> ACById(PostModel model)
+        {
+            List<Destination> dl = _context.Destination.ToList();
+            List<Flight> fl = _context.Flight.ToList();
+            //List<Rating> rl = _context.Rating.ToList();
+            var ac = await _context.AirCompanies.FindAsync(model.Id);
+            if (ac == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(ac);
+        }
+
+        [HttpPost]
+        [Route("BookFlight")]
+        public async Task<IActionResult> BookFlight(PostModel model)
+        {
+            List<Destination> dl = _context.Destination.ToList();
+            List<Flight> fl = _context.Flight.ToList();
+            List<Flight> fl1 = new List<Flight>();
+            //List<Rating> rl = _context.Rating.ToList();
+            var ac = await _context.AirCompanies.FindAsync(model.Id);
+            if (ac == null)
+            {
+                return NotFound();
+            }
+
+            foreach (var item in ac.Flights)
+            {
+                if (item.DestinationFrom == model.DestinationFrom && item.DestinationTo == model.DestinationTo)
+                {
+                    fl1.Add(item);
+                }
+            }
+
+            return Ok(fl1);
+        }
+
+        [HttpPost]
+        [Route("ReserveFlight")]
+        public async Task<IActionResult> ReserveFlight(Flight flight)
+        {
+            List<Destination> dl = _context.Destination.ToList();
+            List<Flight> fl = _context.Flight.ToList();
+            List<Ticket> tl = _context.Ticket.ToList();
+            List<Flight> fl1 = new List<Flight>();
+            Ticket t = new Ticket();
+            //List<Rating> rl = _context.Rating.ToList();
+            var flt = await _context.Flight.FindAsync(flight.Id);
+            if (flt == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                //t.Id = 0;
+                t.PassportNum = "213123";
+                t.Username = "Pera";
+                t.DestinationFrom = flt.DestinationFrom;
+                t.DestinationTo = flt.DestinationTo;
+                t.Flight = flight;
+                t.FlightLength = flt.FlightLength;
+                t.LandingDate = flt.LandingDate;
+                t.TakeoffDate = flt.TakeoffDate;
+                t.TakeoffTime = flt.TakeoffTime;
+                t.TicketPrice = flt.TicketPrice;
+
+                flt.Tickets.Add(t);
+                await _context.SaveChangesAsync();
+            }
+            return Ok();
         }
 
         // DELETE: api/AirCompanies/5

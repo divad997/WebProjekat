@@ -1,3 +1,20 @@
+<table style="position: relative;" border="1">
+    <tr>
+        <td>Search by destination</td>
+        <td>
+            <input type="text" value="" id="DestinationFrom"/>
+        </td>
+        <td>
+            <input type="text" value="" id="DestinationTo"/>
+        </td>
+        <td colspan="2">
+            <button (click)="onSearchClick()">Search</button>
+        </td>
+        <td colspan="2">
+            <button (click)="onResetClick()">Reset</button>
+        </td>
+    </tr>
+</table>
 
 <div class="limiter" style="position: relative;">
     <div class="container-table100">
@@ -19,7 +36,7 @@
                         </div>
                     </div>
 
-                    <div class="row" *ngFor="let item of allCompanies" routerLink="/aircompanylist/{{item.Name}}/details">
+                    <div class="row" *ngFor="let item of allCompanies" routerLink="/aircompanylist/{{item.Id}}/details">
                         <div class="cell" data-title="Air Company">
                             {{item.Name}}
                         </div>

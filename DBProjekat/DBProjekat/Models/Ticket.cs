@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBProjekat.Models
 {
-    public class Flight
+    public class Ticket
     {
         [Key]
         public int Id { get; set; }
@@ -25,8 +25,9 @@ namespace DBProjekat.Models
         [Required]
         public double TicketPrice { get; set; }
         public List<Rating> Ratings { get; set; }
-        public List<Ticket> Tickets { get; set; }
+        public string Username { get; set; }
+        public string PassportNum { get; set; }
 
-        public AirCompany AirCompany { get; set; }
+        public Flight Flight { get; set; }
     }
 }

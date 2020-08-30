@@ -9,7 +9,7 @@ namespace DBProjekat.Models
     public class Location
     {
         [Key]
-        public int LId { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Location1 { get; set; } 
 

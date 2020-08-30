@@ -4,14 +4,16 @@ using DBProjekat.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DBProjekat.Migrations
 {
     [DbContext(typeof(AgencyContext))]
-    partial class AgencyContextModelSnapshot : ModelSnapshot
+    [Migration("20200829211908_TicketAdd1")]
+    partial class TicketAdd1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -237,9 +239,6 @@ namespace DBProjekat.Migrations
                         .IsRequired();
 
                     b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.Property<string>("PasportNumber")
                         .IsRequired();
 
                     b.Property<string>("Password")

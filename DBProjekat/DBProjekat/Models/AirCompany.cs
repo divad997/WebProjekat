@@ -19,11 +19,8 @@ namespace DBProjekat.Models
         public string About { get; set; }
         [Required]
         public string Prices { get; set;  }
-        [Required]
         public List<Destination> Destinations { get; set; }
-        [Required]
         public List<Flight> Flights { get; set; }
-        [Required]
         public List<Rating> Ratings { get; set; }
     }
 }

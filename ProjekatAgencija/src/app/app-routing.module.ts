@@ -7,6 +7,7 @@ import { RentacardetailsComponent } from './rentacardetails/rentacardetails.comp
 import { AircompanylistComponent } from './aircompanylist/aircompanylist.component';
 import { RentacarlistComponent } from './rentacarlist/rentacarlist.component';
 import { AirdetailsComponent } from './airdetails/airdetails.component';
+import { BookflightComponent } from './bookflight/bookflight.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
       { path: "", component: RentacarlistComponent },
       { path: ":id/details", component: RentacardetailsComponent }
     ]
+  },
+  {
+    path : "bookflight/:id",
+    component: BookflightComponent
   }
 ];
 

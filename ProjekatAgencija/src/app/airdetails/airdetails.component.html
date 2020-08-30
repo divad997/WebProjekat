@@ -1,9 +1,9 @@
-<h3 style="position: relative;">Company name</h3>
-<p style="position: relative;">About</p>
+<h3 style="position: relative;">{{Company.Name}}</h3>
+<p style="position: relative;">{{Company.About}}</p>
 <table style="position: relative;">
-    <tr>
-      <th>Location</th>
-      <th>Location</th>
-      <th>Location</th>
+  <tr>Destinations:</tr>
+    <tr *ngFor="let dest of Company.Destinations">
+      <th>{{dest.Destination1}}</th>
     </tr>
 </table>
+<button routerLink="/bookflight/{{Company.Id}}" style="position: relative;">Book Flight</button>

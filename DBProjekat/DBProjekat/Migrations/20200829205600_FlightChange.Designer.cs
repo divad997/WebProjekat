@@ -4,14 +4,16 @@ using DBProjekat.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DBProjekat.Migrations
 {
     [DbContext(typeof(AgencyContext))]
-    partial class AgencyContextModelSnapshot : ModelSnapshot
+    [Migration("20200829205600_FlightChange")]
+    partial class FlightChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,8 +146,6 @@ namespace DBProjekat.Migrations
 
                     b.Property<int?>("RentCompanyId");
 
-                    b.Property<int?>("TicketId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AirCompanyId");
@@ -155,8 +155,6 @@ namespace DBProjekat.Migrations
                     b.HasIndex("FlightId");
 
                     b.HasIndex("RentCompanyId");
-
-                    b.HasIndex("TicketId");
 
                     b.ToTable("Rating");
                 });
@@ -184,43 +182,6 @@ namespace DBProjekat.Migrations
                     b.ToTable("RentCompanies");
                 });
 
-            modelBuilder.Entity("DBProjekat.Models.Ticket", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("DestinationFrom")
-                        .IsRequired();
-
-                    b.Property<string>("DestinationTo")
-                        .IsRequired();
-
-                    b.Property<int?>("FlightId");
-
-                    b.Property<double>("FlightLength");
-
-                    b.Property<DateTime>("LandingDate");
-
-                    b.Property<string>("PassportNum")
-                        .IsRequired();
-
-                    b.Property<DateTime>("TakeoffDate");
-
-                    b.Property<DateTime>("TakeoffTime");
-
-                    b.Property<double>("TicketPrice");
-
-                    b.Property<string>("Username")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FlightId");
-
-                    b.ToTable("Ticket");
-                });
-
             modelBuilder.Entity("DBProjekat.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -237,9 +198,6 @@ namespace DBProjekat.Migrations
                         .IsRequired();
 
                     b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.Property<string>("PasportNumber")
                         .IsRequired();
 
                     b.Property<string>("Password")
@@ -306,17 +264,6 @@ namespace DBProjekat.Migrations
                     b.HasOne("DBProjekat.Models.RentCompany", "RentCompany")
                         .WithMany()
                         .HasForeignKey("RentCompanyId");
-
-                    b.HasOne("DBProjekat.Models.Ticket")
-                        .WithMany("Ratings")
-                        .HasForeignKey("TicketId");
-                });
-
-            modelBuilder.Entity("DBProjekat.Models.Ticket", b =>
-                {
-                    b.HasOne("DBProjekat.Models.Flight", "Flight")
-                        .WithMany("Tickets")
-                        .HasForeignKey("FlightId");
                 });
 #pragma warning restore 612, 618
         }

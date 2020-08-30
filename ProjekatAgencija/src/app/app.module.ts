@@ -12,6 +12,7 @@ import { RentacarlistComponent } from './rentacarlist/rentacarlist.component';
 import { AirdetailsComponent } from './airdetails/airdetails.component';
 import { RentacardetailsComponent } from './rentacardetails/rentacardetails.component';
 import { UserserviceService } from './services/userservice/userservice.service';
+import { BookflightComponent } from './bookflight/bookflight.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { UserserviceService } from './services/userservice/userservice.service';
     RentacarlistComponent,
     AirdetailsComponent,
     RentacardetailsComponent,
+    BookflightComponent,
     
   ],
   imports: [

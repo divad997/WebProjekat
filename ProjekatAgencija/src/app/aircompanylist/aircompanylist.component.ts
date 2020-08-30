@@ -10,15 +10,16 @@ import { AirCompany, Destination } from '../entities/aircompany/aircompany';
 export class AircompanylistComponent implements OnInit {
 
   allCompanies: Array<AirCompany>;
-  destin: Array<Destination>;
+  tmp1: string;
+  tmp2: string;
 
   constructor(private airService: AirserviceService) {
-    
+    this.loadAllAC();
    }
 
   ngOnInit(): void {
 
-    this.loadAllAC();
+    
   }
 
   loadAllAC() {  
@@ -26,13 +27,32 @@ export class AircompanylistComponent implements OnInit {
       (res: any) => {
         console.log(res);
         this.allCompanies = res as Array<AirCompany>;
-        this.destin = this.allCompanies[1].Destinations;
-        console.log(this.destin);
       },
       err => {
         console.log(err);
       }
     );
+  }
+
+  onSearchClick()
+  {
+    this.tmp1 = (<HTMLInputElement>document.getElementById("DestinationFrom")).value;
+    this.tmp2 = (<HTMLInputElement>document.getElementById("DestinationTo")).value;
+    console.log(this.tmp1, this.tmp2);
+    this.airService.searchByDestination(this.tmp1, this.tmp2).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.allCompanies = res as Array<AirCompany>;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  onResetClick()
+  {
+    this.loadAllAC();
   }
 
 }
