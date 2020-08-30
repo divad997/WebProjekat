@@ -13,6 +13,8 @@ import { AirdetailsComponent } from './airdetails/airdetails.component';
 import { RentacardetailsComponent } from './rentacardetails/rentacardetails.component';
 import { UserserviceService } from './services/userservice/userservice.service';
 import { BookflightComponent } from './bookflight/bookflight.component';
+import { NavComponent } from './nav/nav.component';
+import { AuthService } from './services/authservice/auth.service';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { BookflightComponent } from './bookflight/bookflight.component';
     AirdetailsComponent,
     RentacardetailsComponent,
     BookflightComponent,
+    NavComponent,
     
   ],
   imports: [
@@ -34,7 +37,10 @@ import { BookflightComponent } from './bookflight/bookflight.component';
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [UserserviceService],
+  providers: [
+    UserserviceService, 
+    AuthService
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
