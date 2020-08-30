@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace DBProjekat
@@ -40,6 +41,7 @@ namespace DBProjekat
                     {
                         (resolver as DefaultContractResolver).NamingStrategy = null;
                     }
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 });
             services.Configure<CookiePolicyOptions>(options =>
             {
