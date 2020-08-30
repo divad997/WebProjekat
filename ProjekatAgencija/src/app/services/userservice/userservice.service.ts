@@ -14,7 +14,7 @@ export class UserserviceService {
   constructor(private http: HttpClient) { }
   
   postUser(formData:User){
-   return this.http.post(this.url + '/Users', formData);
+   return this.http.post(this.url + '/Auth/register', formData);
   }
   /*getAllUsers(){  
     return this.http.get(this.url + '/AllUserDetails');  

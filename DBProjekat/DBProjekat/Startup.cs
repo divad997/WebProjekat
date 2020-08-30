@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using DBProjekat.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 
 namespace DBProjekat
@@ -48,6 +51,20 @@ namespace DBProjekat
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
             services.AddCors();
+
+            services.AddScoped<IAuthRepository, AuthRepository>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,9 +77,10 @@ namespace DBProjekat
 
             app.UseCors(options =>
             options.WithOrigins("http://localhost:4200")
+            
             .AllowAnyMethod()
             .AllowAnyHeader());
-
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

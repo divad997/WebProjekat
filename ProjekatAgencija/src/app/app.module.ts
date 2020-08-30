@@ -12,6 +12,8 @@ import { RentacarlistComponent } from './rentacarlist/rentacarlist.component';
 import { AirdetailsComponent } from './airdetails/airdetails.component';
 import { RentacardetailsComponent } from './rentacardetails/rentacardetails.component';
 import { UserserviceService } from './services/userservice/userservice.service';
+import { NavComponent } from './nav/nav.component';
+import { AuthService } from './services/authservice/auth.service';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { UserserviceService } from './services/userservice/userservice.service';
     RentacarlistComponent,
     AirdetailsComponent,
     RentacardetailsComponent,
+    NavComponent,
     
   ],
   imports: [
@@ -32,7 +35,10 @@ import { UserserviceService } from './services/userservice/userservice.service';
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [UserserviceService],
+  providers: [
+    UserserviceService, 
+    AuthService
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
