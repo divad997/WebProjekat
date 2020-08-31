@@ -159,16 +159,21 @@ namespace DBProjekat.Models
                     
                 }
 
-               /* else if (!context.Locations.Any())
+               else if (!context.Users.Any())
                 {
-                    context.Locations.AddRange(
+                    context.Users.AddRange(
 
-                        new Location
+                        new User
                         {
-                           
-                            Location1 = "Proba 23",
-                            RentCompanyId = 1,
-                            
+                           Username = "admin",
+                           Email = "admin@admin",
+                           Password = "admin",
+                           Name = "Admir",
+                           LastName = "Admirov",
+                           City = "Adminovo",
+                           PhoneNumber = "2131313",
+                           PassportNumber = "3213131",
+                           Role = "Admin"
                            
                         }
 
@@ -176,7 +181,7 @@ namespace DBProjekat.Models
 
                     );
                     context.SaveChanges();
-                }*/
+                }
                 context.SaveChanges();
             }
         }

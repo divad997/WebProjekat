@@ -255,27 +255,37 @@ namespace DBProjekat.Controllers
             List<Ticket> tl = _context.Ticket.ToList();
             List<Flight> fl1 = new List<Flight>();
             Ticket t = new Ticket();
+            int numOfT = Int32.Parse(model.NumberOfTickets);
             //List<Rating> rl = _context.Rating.ToList();
             var flt = await _context.Flight.FindAsync(model.Fl.Id);
+            if (flt.NumberOfTickets - numOfT >= 0)
+            {
+                flt.NumberOfTickets -= numOfT;
+            }
+            else
+            {
+                return BadRequest();
+            }
+            
             if (flt == null)
             {
                 return NotFound();
             }
             else
             {
-                //t.Id = 0;
                 t.PassportNum = model.PassportNumber;
                 t.Username = model.Username;
                 t.DestinationFrom = flt.DestinationFrom;
                 t.DestinationTo = flt.DestinationTo;
-                t.Flight = model.Fl;
+                t.Flight = flt;
                 t.FlightLength = flt.FlightLength;
                 t.LandingDate = flt.LandingDate;
                 t.TakeoffDate = flt.TakeoffDate;
                 t.TakeoffTime = flt.TakeoffTime;
-                t.TicketPrice = flt.TicketPrice;
+                t.TicketPrice = flt.TicketPrice * numOfT;
 
                 flt.Tickets.Add(t);
+
                 await _context.SaveChangesAsync();
             }
             return Ok();

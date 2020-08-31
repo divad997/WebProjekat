@@ -15,5 +15,6 @@ namespace DBProjekat.Models
         public string PassportNumber { get; set; }
         public Flight Fl { get; set; }
         public string Username { get; set; }
+        public string NumberOfTickets { get; set; }
     }
 }

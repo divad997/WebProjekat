@@ -36,12 +36,13 @@ export class AirserviceService {
     return this.http.post(this.url + '/AirCompanies/BookFlight', idModel);
   }
 
-  reserveFligth(flight: Flight, un: string, pn: string)
+  reserveFligth(flight: Flight, un: string, pn: string, tn: string)
   {
     var idModel = {
       Username: un,
       PassportNumber: pn,
-      Fl: flight
+      Fl: flight,
+      NumberOfTickets: tn
     }
 
     return this.http.post(this.url + '/AirCompanies/ReserveFlight', idModel);

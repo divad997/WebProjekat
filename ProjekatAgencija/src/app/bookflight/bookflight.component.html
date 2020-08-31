@@ -38,11 +38,21 @@
         <th>Destination From</th>
         <th>Destination To</th>
         <th>Date</th>
+        <th>Number of tickets</th>
     </tr>
     <tr *ngFor="let fl of flights">
         <td>{{fl.DestinationFrom}}</td>
         <td>{{fl.DestinationTo}}</td>
         <td>{{fl.TakeoffDate | date: 'mediumDate'}}</td>
+        <td>
+            <select id="ticketNum">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </td>
         <td >
             <button *ngIf="loggedIn()" id="{{fl.Id}}" (click)="reserveFlight($event, fl)">Reserve</button>
         </td>

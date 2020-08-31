@@ -20,6 +20,7 @@ export class BookflightComponent implements OnInit {
   date: string;
   flights: Array<Flight>;
   user: User;
+  numberOfTickets: string;
 
   constructor(private airService: AirserviceService, route: ActivatedRoute, private userService: UserserviceService, private authService: AuthService) {
     route.params.subscribe(params => {this.ACId = params.id});
@@ -54,7 +55,8 @@ export class BookflightComponent implements OnInit {
 
   reserveFlight(event, flight)
   {
-    this.airService.reserveFligth(flight, this.user.Username, this.user.PassportNumber).subscribe(
+    this.numberOfTickets = (<HTMLInputElement>document.getElementById("ticketNum")).value;
+    this.airService.reserveFligth(flight, this.user.Username, this.user.PassportNumber, this.numberOfTickets).subscribe(
       (res: any) => {
         alert("Reservation complete");
       },

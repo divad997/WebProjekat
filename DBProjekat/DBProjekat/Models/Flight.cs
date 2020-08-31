@@ -24,7 +24,11 @@ namespace DBProjekat.Models
         public double FlightLength { get; set; }
         [Required]
         public double TicketPrice { get; set; }
+
+        public int NumberOfTickets { get; set; }
+
         public List<Rating> Ratings { get; set; }
+
         public List<Ticket> Tickets { get; set; }
 
         public AirCompany AirCompany { get; set; }
