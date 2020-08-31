@@ -36,9 +36,15 @@ export class AirserviceService {
     return this.http.post(this.url + '/AirCompanies/BookFlight', idModel);
   }
 
-  reserveFligth(flight: Flight)
+  reserveFligth(flight: Flight, un: string, pn: string)
   {
-    return this.http.post(this.url + '/AirCompanies/ReserveFlight', flight);
+    var idModel = {
+      Username: un,
+      PassportNumber: pn,
+      Fl: flight
+    }
+
+    return this.http.post(this.url + '/AirCompanies/ReserveFlight', idModel);
   }
 
   searchByDestination(df: string, dt: string)
@@ -48,5 +54,25 @@ export class AirserviceService {
       DestinationTo: dt
     }
     return this.http.post(this.url + '/AirCompanies/SearchByDestination', idModel);
+  }
+
+  searchByDate(td: string, ld: string)
+  {
+    var idModel = {
+      Date: td,
+      LandDate: ld
+    }
+    return this.http.post(this.url + '/AirCompanies/SearchByDate', idModel);
+  }
+
+  searchByBoth(df: string, dt: string, td: string, ld: string)
+  {
+    var idModel = {
+      DestinationFrom: df,
+      DestinationTo: dt,
+      Date: td,
+      LandDate: ld
+    }
+    return this.http.post(this.url + '/AirCompanies/SearchByBoth', idModel);
   }
 }

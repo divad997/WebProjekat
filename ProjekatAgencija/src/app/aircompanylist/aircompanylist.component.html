@@ -1,5 +1,14 @@
 <table style="position: relative;" border="1">
     <tr>
+        <td></td>
+        <td>
+            <label>From</label>
+        </td>
+        <td>
+            <label>To</label>
+        </td>
+    </tr>
+    <tr>
         <td>Search by destination</td>
         <td>
             <input type="text" value="" id="DestinationFrom"/>
@@ -8,7 +17,38 @@
             <input type="text" value="" id="DestinationTo"/>
         </td>
         <td colspan="2">
-            <button (click)="onSearchClick()">Search</button>
+            <button (click)="onSearchClick()">Search destinations</button>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <label>Takeoff date</label>
+        </td>
+        <td>
+            <label>Landing date</label>
+        </td>
+    </tr>
+    <tr>
+        <td>Search by date</td>
+        <td>
+            <input type="date" value="" id="TakeoffDate"/>
+        </td>
+        <td>
+            <input type="date" value="" id="LandDate"/>
+        </td>
+        <td colspan="2">
+            <button (click)="onSearchDateClick()">Search date</button>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+            <button (click)="onSearchBothClick()">Search by both</button>
         </td>
         <td colspan="2">
             <button (click)="onResetClick()">Reset</button>

@@ -12,6 +12,8 @@ export class AircompanylistComponent implements OnInit {
   allCompanies: Array<AirCompany>;
   tmp1: string;
   tmp2: string;
+  tmp3: string;
+  tmp4: string;
 
   constructor(private airService: AirserviceService) {
     this.loadAllAC();
@@ -40,6 +42,40 @@ export class AircompanylistComponent implements OnInit {
     this.tmp2 = (<HTMLInputElement>document.getElementById("DestinationTo")).value;
     console.log(this.tmp1, this.tmp2);
     this.airService.searchByDestination(this.tmp1, this.tmp2).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.allCompanies = res as Array<AirCompany>;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  onSearchDateClick()
+  {
+    this.tmp3 = (<HTMLInputElement>document.getElementById("TakeoffDate")).value;
+    this.tmp4 = (<HTMLInputElement>document.getElementById("LandDate")).value;
+    console.log(this.tmp1, this.tmp2);
+    this.airService.searchByDate(this.tmp3, this.tmp4).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.allCompanies = res as Array<AirCompany>;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  onSearchBothClick()
+  {
+    this.tmp1 = (<HTMLInputElement>document.getElementById("DestinationFrom")).value;
+    this.tmp2 = (<HTMLInputElement>document.getElementById("DestinationTo")).value;
+    this.tmp3 = (<HTMLInputElement>document.getElementById("TakeoffDate")).value;
+    this.tmp4 = (<HTMLInputElement>document.getElementById("LandDate")).value;
+    console.log(this.tmp1, this.tmp2);
+    this.airService.searchByBoth(this.tmp1, this.tmp2, this.tmp3, this.tmp4).subscribe(
       (res: any) => {
         console.log(res);
         this.allCompanies = res as Array<AirCompany>;

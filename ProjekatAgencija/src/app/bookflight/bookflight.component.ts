@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AirCompany, Flight } from '../entities/aircompany/aircompany';
 import { AirserviceService } from '../services/airservice/airservice.service';
 import { ActivatedRoute } from '@angular/router';
+import { UserserviceService } from '../services/userservice/userservice.service';
+import { AuthService } from '../services/authservice/auth.service';
+import { User } from '../entities/user';
 
 @Component({
   selector: 'app-bookflight',
@@ -16,13 +19,15 @@ export class BookflightComponent implements OnInit {
   destTo: string;
   date: string;
   flights: Array<Flight>;
+  user: User;
 
-  constructor(private airService: AirserviceService, route: ActivatedRoute) {
+  constructor(private airService: AirserviceService, route: ActivatedRoute, private userService: UserserviceService, private authService: AuthService) {
     route.params.subscribe(params => {this.ACId = params.id});
    }
 
   ngOnInit(): void {
     this.getACById();
+    this.loggedUser();
   }
 
   getACById()
@@ -49,7 +54,7 @@ export class BookflightComponent implements OnInit {
 
   reserveFlight(event, flight)
   {
-    this.airService.reserveFligth(flight).subscribe(
+    this.airService.reserveFligth(flight, this.user.Username, this.user.PassportNumber).subscribe(
       (res: any) => {
         alert("Reservation complete");
       },
@@ -57,6 +62,15 @@ export class BookflightComponent implements OnInit {
         alert("Reservation could not be processed");
       }
     )
+  }
+
+  loggedUser()
+  {
+    this.userService.getUserById(this.authService.decodedToken.nameid).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.user = res;
+      });
   }
 
   loggedIn() {

@@ -11,5 +11,9 @@ namespace DBProjekat.Models
         public string DestinationFrom { get; set; }
         public string DestinationTo { get; set; }
         public string Date { get; set; }
+        public string LandDate { get; set; }
+        public string PassportNumber { get; set; }
+        public Flight Fl { get; set; }
+        public string Username { get; set; }
     }
 }

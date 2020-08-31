@@ -66,6 +66,74 @@ namespace DBProjekat.Controllers
             return searchedAC;
         }
 
+        [Route("SearchByDate")]
+        [HttpPost]
+        public List<AirCompany> SearchByDate(PostModel model)
+        {
+            List<AirCompany> acl = _context.AirCompanies.ToList();
+            List<Destination> dl = _context.Destination.ToList();
+            //List<Rating> rl = _context.Rating.ToList();
+            List<Flight> fl = _context.Flight.ToList();
+            DateTime tmpTDate = DateTime.Parse(model.Date);
+            DateTime tmpLDate = DateTime.Parse(model.LandDate);
+
+            List<AirCompany> searchedAC = new List<AirCompany>();
+
+            foreach (var item in acl)
+            {
+                if (item.Flights == null)
+                {
+                    continue;
+                }
+                else
+                {
+                    foreach (var item1 in item.Flights)
+                    {
+                        if (DateTime.Compare(item1.TakeoffDate.Date, tmpTDate.Date) == 0 && DateTime.Compare(item1.LandingDate.Date, tmpLDate.Date) == 0)
+                        {
+                            searchedAC.Add(item);
+                        }
+                    }
+                }
+            }
+
+            return searchedAC;
+        }
+
+        [Route("SearchByBoth")]
+        [HttpPost]
+        public List<AirCompany> SearchByBoth(PostModel model)
+        {
+            List<AirCompany> acl = _context.AirCompanies.ToList();
+            List<Destination> dl = _context.Destination.ToList();
+            //List<Rating> rl = _context.Rating.ToList();
+            List<Flight> fl = _context.Flight.ToList();
+            DateTime tmpTDate = DateTime.Parse(model.Date);
+            DateTime tmpLDate = DateTime.Parse(model.LandDate);
+
+            List<AirCompany> searchedAC = new List<AirCompany>();
+
+            foreach (var item in acl)
+            {
+                if (item.Flights == null)
+                {
+                    continue;
+                }
+                else
+                {
+                    foreach (var item1 in item.Flights)
+                    {
+                        if (DateTime.Compare(item1.TakeoffDate.Date, tmpTDate.Date) == 0 && DateTime.Compare(item1.LandingDate.Date, tmpLDate.Date) == 0 && item1.DestinationFrom == model.DestinationFrom && item1.DestinationTo == model.DestinationTo)
+                        {
+                            searchedAC.Add(item);
+                        }
+                    }
+                }
+            }
+
+            return searchedAC;
+        }
+
         // GET: api/AirCompanies/5
         [Route("GetAirCompany")]
         [HttpGet("{id}")]
@@ -159,6 +227,7 @@ namespace DBProjekat.Controllers
             List<Destination> dl = _context.Destination.ToList();
             List<Flight> fl = _context.Flight.ToList();
             List<Flight> fl1 = new List<Flight>();
+            DateTime tmpDate = DateTime.Parse(model.Date);
             //List<Rating> rl = _context.Rating.ToList();
             var ac = await _context.AirCompanies.FindAsync(model.Id);
             if (ac == null)
@@ -168,7 +237,7 @@ namespace DBProjekat.Controllers
 
             foreach (var item in ac.Flights)
             {
-                if (item.DestinationFrom == model.DestinationFrom && item.DestinationTo == model.DestinationTo)
+                if (item.DestinationFrom == model.DestinationFrom && item.DestinationTo == model.DestinationTo && DateTime.Compare(tmpDate.Date, item.TakeoffDate.Date) == 0)
                 {
                     fl1.Add(item);
                 }
@@ -179,7 +248,7 @@ namespace DBProjekat.Controllers
 
         [HttpPost]
         [Route("ReserveFlight")]
-        public async Task<IActionResult> ReserveFlight(Flight flight)
+        public async Task<IActionResult> ReserveFlight(PostModel model)
         {
             List<Destination> dl = _context.Destination.ToList();
             List<Flight> fl = _context.Flight.ToList();
@@ -187,7 +256,7 @@ namespace DBProjekat.Controllers
             List<Flight> fl1 = new List<Flight>();
             Ticket t = new Ticket();
             //List<Rating> rl = _context.Rating.ToList();
-            var flt = await _context.Flight.FindAsync(flight.Id);
+            var flt = await _context.Flight.FindAsync(model.Fl.Id);
             if (flt == null)
             {
                 return NotFound();
@@ -195,11 +264,11 @@ namespace DBProjekat.Controllers
             else
             {
                 //t.Id = 0;
-                t.PassportNum = "213123";
-                t.Username = "Pera";
+                t.PassportNum = model.PassportNumber;
+                t.Username = model.Username;
                 t.DestinationFrom = flt.DestinationFrom;
                 t.DestinationTo = flt.DestinationTo;
-                t.Flight = flight;
+                t.Flight = model.Fl;
                 t.FlightLength = flt.FlightLength;
                 t.LandingDate = flt.LandingDate;
                 t.TakeoffDate = flt.TakeoffDate;
