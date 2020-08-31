@@ -59,5 +59,9 @@ export class BookflightComponent implements OnInit {
     )
   }
 
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
 
 }

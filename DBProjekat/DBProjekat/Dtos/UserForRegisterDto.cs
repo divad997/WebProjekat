@@ -24,6 +24,8 @@ namespace DBProjekat.Dtos
         public string City { get; set; }
       
         public string PhoneNumber { get; set; }
+
+        public string PassportNumber { get; set; }
         
         public string Role { get; set; }
 

@@ -26,6 +26,8 @@ namespace DBProjekat.Models
         [Required]
         public string PhoneNumber { get; set; }
         [Required]
+        public string PassportNumber { get; set; }
+        [Required]
         public string Role { get; set; }
     }
 }

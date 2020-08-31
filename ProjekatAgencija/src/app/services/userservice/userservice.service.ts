@@ -16,6 +16,18 @@ export class UserserviceService {
   postUser(formData:User){
    return this.http.post(this.url + '/Auth/register', formData);
   }
+
+  getUserById(id) {
+    var idModel = {
+      Id: id
+    }
+    return this.http.post(this.url + '/Users/GetUserById', idModel);
+  }
+
+  editUser(user: User){
+    return this.http.post(this.url + '/Users/EditUser', user);
+  }
+  
   /*getAllUsers(){  
     return this.http.get(this.url + '/AllUserDetails');  
   }  

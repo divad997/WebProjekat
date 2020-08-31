@@ -1,15 +1,18 @@
 <div id="sc-edprofile">
     <h1>Edit Profile</h1>
     <div class="sc-container">
-      <input type="text" placeholder="Username" />
-      <input type="text" placeholder="Email Address" />
-      <input type="password" placeholder="Password" />
-      <input type="password" placeholder="Confirm Password" />
-      <input type="text" placeholder="First Name" />
-      <input type="text" placeholder="Last Name" />
-      <input type="text" placeholder="City" />
-      <input type="text" placeholder="Phone Number" />
-      <input type="submit" value="Edit" />
+      <form [formGroup]="editForm" (ngSubmit)="onEditSubmit()">
+        <input formControlName="Username" type="text" value="{{user.Username}}"/>
+        <input formControlName="Email" type="text" value="{{user.Email}}"/>
+        <input formControlName="Password" type="password" placeholder="New Password" value="{{user.Password}}"/>
+        <input formControlName="ConfirmPassword" type="password" placeholder="Confirm Password" value="{{user.Password}}"/>
+        <input formControlName="Name" type="text"  value="{{user.Name}}"/>
+        <input formControlName="LastName" type="text"  value="{{user.LastName}}"/>
+        <input formControlName="City" type="text"  value="{{user.City}}"/>
+        <input formControlName="PhoneNumber" type="text"  value="{{user.PhoneNumber}}"/>
+        <input formControlName="PassportNumber" type="text"  value="{{user.PassportNumber}}"/>
+        <input type="submit" value="Edit" />
+      </form>
     </div>
   </div>
 

@@ -8,6 +8,7 @@ export class User {
     LastName : string;
     City : string;
     PhoneNumber : string;
+    PassportNumber : string;
     Role : string;
 
     public constructor(init?: Partial<User>) {

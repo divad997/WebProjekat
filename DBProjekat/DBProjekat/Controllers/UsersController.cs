@@ -29,6 +29,7 @@ namespace DBProjekat.Controllers
         }
 
         // GET: api/Users/5
+        [Route("GetUser")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser([FromRoute] int id)
         {
@@ -45,6 +46,45 @@ namespace DBProjekat.Controllers
             }
 
             return Ok(user);
+        }
+
+        [Route("GetUserById")]
+        [HttpPost]
+        public async Task<IActionResult> GetUserById(PostModel postModel)
+        {
+            var user = await _context.Users.FindAsync(postModel.Id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+        [Route("EditUser")]
+        [HttpPost]
+        public async Task<IActionResult> EditUser(User user)
+        {
+            var usr = await _context.Users.FindAsync(user.Id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            usr.Username = user.Username;
+            usr.Email = user.Email;
+            usr.Password = user.Password;
+            usr.Name = user.Name;
+            usr.LastName = user.LastName;
+            usr.City = user.City;
+            usr.PhoneNumber = user.PhoneNumber;
+            usr.PassportNumber = user.PassportNumber;
+            usr.Role = user.Role;
+            usr.Id = user.Id;
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
 
         // PUT: api/Users/5

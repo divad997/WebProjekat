@@ -51,6 +51,7 @@ namespace DBProjekat.Controllers
                 Name = userDto.Name,
                 LastName = userDto.LastName,
                 City = userDto.City,
+                PassportNumber = userDto.PassportNumber,
                 PhoneNumber = userDto.PhoneNumber,
                 Role = "User"
                 

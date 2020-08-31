@@ -43,8 +43,8 @@
         <td>{{fl.DestinationFrom}}</td>
         <td>{{fl.DestinationTo}}</td>
         <td>{{fl.TakeoffDate | date: 'mediumDate'}}</td>
-        <td>
-            <button id="{{fl.Id}}" (click)="reserveFlight($event, fl)">Reserve</button>
+        <td >
+            <button *ngIf="loggedIn()" id="{{fl.Id}}" (click)="reserveFlight($event, fl)">Reserve</button>
         </td>
     </tr>
 </table>

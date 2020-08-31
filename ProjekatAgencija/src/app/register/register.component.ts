@@ -28,7 +28,8 @@ export class RegisterComponent implements OnInit {
         Name: new FormControl(''),
         LastName: new FormControl(''),
         City: new FormControl(''),
-        PhoneNumber: new FormControl('')
+        PhoneNumber: new FormControl(''),
+        PassportNumber: new FormControl('')
       }
     );
     //this.loadAllUsers();
