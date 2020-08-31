@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {  RentCompany } from '../entities/rentacar/rentacar';
 import { CarserviceService } from '../services/carservice/carservice.service';
+import { UserserviceService } from '../services/userservice/userservice.service';
+import { AuthService } from '../services/authservice/auth.service';
+import { User } from '../entities/user';
 
 @Component({
   selector: 'app-rentacarlist',
@@ -10,9 +13,9 @@ import { CarserviceService } from '../services/carservice/carservice.service';
 export class RentacarlistComponent implements OnInit {
 
   allCompanies: Array<RentCompany>;
-  
+  user: User
 
-  constructor(private carService: CarserviceService) {
+  constructor(private carService: CarserviceService, private userService: UserserviceService, private authService: AuthService) {
     
    }
 

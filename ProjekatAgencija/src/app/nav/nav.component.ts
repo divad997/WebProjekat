@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../entities/user'
 import { AuthService } from '../services/authservice/auth.service';
+import { UserserviceService } from '../services/userservice/userservice.service';
 
 
 @Component({
@@ -10,8 +12,9 @@ import { AuthService } from '../services/authservice/auth.service';
 export class NavComponent implements OnInit {
 
   model: any = {};
+  user: User;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private userService: UserserviceService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +25,19 @@ export class NavComponent implements OnInit {
     }, error => {
       console.log('Failed to Log in');
     });
+  }
+
+  isAdmin()
+  {
+    this.userService.getUserById(this.authService.decodedToken.nameid).subscribe(
+      (res: any) => {
+        
+        this.user = res;
+        if(this.user.Role == "Admin")
+          return true;
+        else 
+          return false;
+      });
   }
 
   loggedIn() {

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AirserviceService } from '../services/airservice/airservice.service';
 import { AirCompany, Destination } from '../entities/aircompany/aircompany';
+import { AuthService } from '../services/authservice/auth.service';
+import { UserserviceService } from '../services/userservice/userservice.service';
+import { User } from '../entities/user';
 
 @Component({
   selector: 'app-aircompanylist',
@@ -9,13 +12,15 @@ import { AirCompany, Destination } from '../entities/aircompany/aircompany';
 })
 export class AircompanylistComponent implements OnInit {
 
+
+  user: User;
   allCompanies: Array<AirCompany>;
   tmp1: string;
   tmp2: string;
   tmp3: string;
   tmp4: string;
 
-  constructor(private airService: AirserviceService) {
+  constructor(private airService: AirserviceService, private authService: AuthService, private userService: UserserviceService) {
     this.loadAllAC();
    }
 
@@ -84,6 +89,33 @@ export class AircompanylistComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  loggedUser()
+  {
+    this.userService.getUserById(this.authService.decodedToken.nameid).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.user = res;
+      });
+  }
+
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+
+  isAdmin()
+  {
+    this.userService.getUserById(this.authService.decodedToken.nameid).subscribe(
+      (res: any) => {
+        
+        this.user = res;
+        if(this.user.Role == "Admin")
+          return true;
+        else 
+          return false;
+      });
   }
 
   onResetClick()

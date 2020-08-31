@@ -89,6 +89,11 @@
                         <div class="cell" data-title="Price">
                             {{item.Prices}}
                         </div>
+                        <div *ngIf="isAdmin()">
+                            <button>Edit</button>
+                            <button>Delete</button>
+                            <button>Create New</button>
+                        </div>
                     </div>
 
                     

@@ -14,4 +14,9 @@ export class CarserviceService {
   {
     return this.http.get(this.url + '/RentCompanies');
   }
+
+  deleteRent(id: number)
+  {
+    return this.http.delete(this.url + '/RentCompanies/' + id.toString()); 
+  }
 }

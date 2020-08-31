@@ -169,7 +169,7 @@ namespace DBProjekat.Models
                            Email = "admin@admin",
                            Password = "admin",
                            Name = "Admir",
-                           LastName = "Admirov",
+                           LastName = "Admirovski",
                            City = "Adminovo",
                            PhoneNumber = "2131313",
                            PassportNumber = "3213131",
