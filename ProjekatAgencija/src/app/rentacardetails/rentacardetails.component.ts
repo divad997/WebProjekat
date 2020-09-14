@@ -4,6 +4,7 @@ import { AuthService } from '../services/authservice/auth.service';
 import { UserserviceService } from '../services/userservice/userservice.service';
 import { User } from '../entities/user';
 import { ActivatedRoute } from '@angular/router';
+import { RentCompany } from '../entities/rentacar/rentacar';
 
 @Component({
   selector: 'app-rentacardetails',
@@ -12,17 +13,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RentacardetailsComponent implements OnInit {
   
-  RCid: number;
+  Company: RentCompany;
+  RCId: number;
   admin: boolean;
   
 
   constructor(private carService: CarserviceService, private authService: AuthService, private userService: UserserviceService, route: ActivatedRoute) {
-    route.params.subscribe(params => {this.RCid = params.id});
+    route.params.subscribe(params => {this.RCId = params.id});
    }
 
   user: User;
 
   ngOnInit(): void {
+    this.getRCById();
   }
 
 
@@ -46,7 +49,7 @@ export class RentacardetailsComponent implements OnInit {
 
   deleteRent()
   {
-    this.carService.deleteRent(this.RCid).subscribe(
+    this.carService.deleteRent(this.RCId).subscribe(
       (res: any) => {
         console.log(res);
       },
@@ -54,5 +57,13 @@ export class RentacardetailsComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  getRCById()
+  {
+    this.carService.getRentCompany(this.RCId).subscribe(
+      (res: any) => {
+        this.Company = res as RentCompany;
+      });
   }
 }

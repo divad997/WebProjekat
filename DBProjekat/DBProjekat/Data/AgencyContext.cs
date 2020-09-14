@@ -21,5 +21,8 @@ namespace DBProjekat.Data
         public DbSet<Flight> Flight { get; set; }
         public DbSet<Rating> Rating { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<CarBooking> CarBookings { get; set; }
+        public DbSet<Location> Locations { get; set; }
     }
 }

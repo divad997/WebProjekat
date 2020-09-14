@@ -43,7 +43,8 @@ namespace DBProjekat.Controllers
             {
                 return NotFound();
             }
-
+            List<Car> lc = _context.Cars.ToList();
+            List<Location> ll = _context.Locations.ToList();
             return Ok(rentCompany);
         }
 
@@ -121,6 +122,60 @@ namespace DBProjekat.Controllers
         private bool RentCompanyExists(int id)
         {
             return _context.RentCompanies.Any(e => e.Id == id);
+        }
+
+
+        [HttpPost]
+        [Route("BookCar")]
+        public async Task<IActionResult> BookCar(PostModel model)
+        {       
+            DateTime DateStart = DateTime.Parse(model.DateStart);
+            DateTime DateReturn = DateTime.Parse(model.DateReturn);
+            double NumberOfDays = (DateReturn - DateStart).TotalDays;
+            double TotalPrice;
+            //List<Rating> rl = _context.Rating.ToList();
+            var car = await _context.Cars.FindAsync(model.Id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            TotalPrice = NumberOfDays * car.DailyRate;
+
+            return Ok(TotalPrice);
+        }
+
+        [HttpPost]
+        [Route("ReserveCar")]
+        public async Task<IActionResult> ReserveCar(PostModel model)
+        {
+            DateTime DateStart = DateTime.Parse(model.DateStart);
+            DateTime DateReturn = DateTime.Parse(model.DateReturn);
+            CarBooking CB = new CarBooking();
+            List<Location> Locations = _context.Locations.ToList();
+            List<CarBooking> CarBookings = await _context.CarBookings.ToListAsync();
+            List<Car> Cars = await _context.Cars.ToListAsync();
+            Car Car1 = Cars.Find(item => item.Id == model.CarId);
+            //List<Rating> rl = _context.Rating.ToList();
+
+
+            var Company = await _context.RentCompanies.FindAsync(model.RCId);
+
+            CB.PassportNum = model.PassportNumber;
+            CB.Username = model.Username;
+            CB.ReserveStart = DateStart;
+            CB.ReserveEnd = DateReturn;
+            CB.TotalPrice = Double.Parse(model.TotalPrice);
+            CB.Car = Car1;
+            CB.Location = Locations.Find(item => item.Location1 == model.Location);
+
+
+            Company.CarBookings = new List<CarBooking>();
+            Company.CarBookings.Add(CB);
+
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
     }
 }

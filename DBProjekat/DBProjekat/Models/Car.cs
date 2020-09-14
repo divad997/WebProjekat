@@ -11,10 +11,16 @@ namespace DBProjekat.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Car1 { get; set; }
+        public string Name { get; set; }
         [Required]
-        public List<Rating> Ratings { get; set; }
+        public double DailyRate { get; set; }
         [Required]
+        public string Type { get; set; }
+        
         public RentCompany RentCompany { get; set; }
+
+        public List<Rating> Ratings { get; set; }
+        
+        
     }
 }

@@ -1,0 +1,42 @@
+<table style="position: relative;">
+    <tr>
+        <td>
+            <label>Location of pick up:</label>
+        </td>
+        <td>
+            <select id="location">
+                <option *ngFor="let loc of Company.Locations" value="{{loc.Location1}}">{{loc.Location1}}</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Date of pick up:</label>
+        </td>
+        <td>
+            <input type="date" id="date1"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Date of return:</label>
+        </td>
+        <td>
+            <input type="date" id="date2"/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button (click)="onBookClick()">Book</button>
+        </td>       
+    </tr>
+</table>
+<table style="position: relative;" border="1">
+    <tr > 
+        <th>Total Price[$]</th>
+    </tr>
+    <tr>
+        <td>{{TotalPrice}}</td>
+    </tr>
+    <button *ngIf="loggedIn()" (click)="reserveCar()">Reserve</button>
+</table>

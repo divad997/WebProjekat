@@ -22,6 +22,8 @@ namespace DBProjekat.Models
         public string Description { get; set; }
         [Required]
         public List<Location> Locations { get; set; }
+        [Required]
+        public List<CarBooking> CarBookings { get; set; }
        
     }
 }

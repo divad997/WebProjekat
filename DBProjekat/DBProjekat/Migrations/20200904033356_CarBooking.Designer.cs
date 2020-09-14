@@ -4,14 +4,16 @@ using DBProjekat.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DBProjekat.Migrations
 {
     [DbContext(typeof(AgencyContext))]
-    partial class AgencyContextModelSnapshot : ModelSnapshot
+    [Migration("20200904033356_CarBooking")]
+    partial class CarBooking
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,11 +75,6 @@ namespace DBProjekat.Migrations
 
                     b.Property<int>("CarId");
 
-                    b.Property<int>("LocationId");
-
-                    b.Property<string>("PassportNum")
-                        .IsRequired();
-
                     b.Property<int?>("RentCompanyId");
 
                     b.Property<DateTime>("ReserveEnd");
@@ -86,14 +83,9 @@ namespace DBProjekat.Migrations
 
                     b.Property<double>("TotalPrice");
 
-                    b.Property<string>("Username")
-                        .IsRequired();
-
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
-
-                    b.HasIndex("LocationId");
 
                     b.HasIndex("RentCompanyId");
 
@@ -160,13 +152,13 @@ namespace DBProjekat.Migrations
                     b.Property<string>("Location1")
                         .IsRequired();
 
-                    b.Property<int?>("RentCompanyId");
+                    b.Property<int>("RentCompanyId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RentCompanyId");
 
-                    b.ToTable("Locations");
+                    b.ToTable("Location");
                 });
 
             modelBuilder.Entity("DBProjekat.Models.Rating", b =>
@@ -313,13 +305,8 @@ namespace DBProjekat.Migrations
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("DBProjekat.Models.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("DBProjekat.Models.RentCompany", "RentCompany")
-                        .WithMany("CarBookings")
+                        .WithMany()
                         .HasForeignKey("RentCompanyId");
                 });
 
@@ -341,7 +328,8 @@ namespace DBProjekat.Migrations
                 {
                     b.HasOne("DBProjekat.Models.RentCompany", "RentCompany")
                         .WithMany("Locations")
-                        .HasForeignKey("RentCompanyId");
+                        .HasForeignKey("RentCompanyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DBProjekat.Models.Rating", b =>

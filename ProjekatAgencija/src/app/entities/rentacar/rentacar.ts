@@ -20,7 +20,9 @@ export class RentCompany {
 export class Car
 {
     Id: number;
-    Car1: string;
+    Name: string;
+    DailyRate: number;
+    Type: string;
     Ratings: Array<Rating>;
     
 

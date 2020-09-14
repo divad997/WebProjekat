@@ -4,14 +4,16 @@ using DBProjekat.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DBProjekat.Migrations
 {
     [DbContext(typeof(AgencyContext))]
-    partial class AgencyContextModelSnapshot : ModelSnapshot
+    [Migration("20200911141502_CarBookingUpdate")]
+    partial class CarBookingUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,13 +162,13 @@ namespace DBProjekat.Migrations
                     b.Property<string>("Location1")
                         .IsRequired();
 
-                    b.Property<int?>("RentCompanyId");
+                    b.Property<int>("RentCompanyId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RentCompanyId");
 
-                    b.ToTable("Locations");
+                    b.ToTable("Location");
                 });
 
             modelBuilder.Entity("DBProjekat.Models.Rating", b =>
@@ -319,7 +321,7 @@ namespace DBProjekat.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DBProjekat.Models.RentCompany", "RentCompany")
-                        .WithMany("CarBookings")
+                        .WithMany()
                         .HasForeignKey("RentCompanyId");
                 });
 
@@ -341,7 +343,8 @@ namespace DBProjekat.Migrations
                 {
                     b.HasOne("DBProjekat.Models.RentCompany", "RentCompany")
                         .WithMany("Locations")
-                        .HasForeignKey("RentCompanyId");
+                        .HasForeignKey("RentCompanyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DBProjekat.Models.Rating", b =>

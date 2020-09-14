@@ -12,9 +12,7 @@ namespace DBProjekat.Models
         public int Id { get; set; }
         [Required]
         public string Location1 { get; set; } 
-
-        public int RentCompanyId { get; set; }
-        
+    
         public RentCompany RentCompany { get; set; }
     }
 }

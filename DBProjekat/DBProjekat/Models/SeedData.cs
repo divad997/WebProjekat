@@ -15,6 +15,25 @@ namespace DBProjekat.Models
             using (var context = new AgencyContext(serviceProvider.GetRequiredService<DbContextOptions<AgencyContext>>()))
             {
                 
+                if (!context.Locations.Any())
+                {
+                    context.Locations.AddRange(
+                        new Location
+                        {
+                            Location1 = "Belgrade, Serbia"
+                        },
+
+                        new Location
+                        {
+                            Location1 = "Berlin, Germany"
+                        },
+
+                        new Location
+                        {
+                            Location1 = "Qinhuangdao, China"
+                        }
+                    );
+                }
                 if(!context.AirCompanies.Any())
                 {
                     context.AirCompanies.AddRange(
@@ -85,17 +104,67 @@ namespace DBProjekat.Models
                             Ratings = new List<Rating>()
 
                         }
-
-
-
-
-
-
                      );
                     
-
+                
                 }
-                else if (!context.RentCompanies.Any())
+                if (!context.Cars.Any())
+                {
+                    List<Car> Cars = new List<Car>();
+                    context.Cars.AddRange(
+
+                        new Car
+                        {
+                            Name = "Fiat 500",
+                            Type = "Mini",
+                            DailyRate = 17.16,
+                        },
+
+                        new Car
+                        {
+                            Name = "Volkswagen Polo",
+                            Type = "Economy",
+                            DailyRate = 20.93,
+                        },
+
+                        new Car
+                        {
+                            Name = "Volkswagen Golf",
+                            Type = "Compact",
+                            DailyRate = 24.13,
+                        },
+
+                        new Car
+                        {
+                            Name = "Ford Focus",
+                            Type = "Compact",
+                            DailyRate = 24.15,
+                        },
+
+                        new Car
+                        {
+                            Name = "Volkswagen Passat",
+                            Type = "Standard",
+                            DailyRate = 17.16,
+                        },
+
+                        new Car
+                        {
+                            Name = "Mercedes E Class",
+                            Type = "Luxury",
+                            DailyRate = 73.77,
+                        },
+
+                        new Car
+                        {
+                            Name = "Ford Mondeo",
+                            Type = "Standard",
+                            DailyRate = 17.16,
+                        }
+                        );
+                    context.SaveChanges();
+                }
+                if (!context.RentCompanies.Any())
                 {
                     context.RentCompanies.AddRange(
 
@@ -104,6 +173,7 @@ namespace DBProjekat.Models
                             Name = "Enterprise",
                             Address = "www.enterprise.com",
                             Cars = new List<Car>(),
+                            CarBookings = new List<CarBooking>(),
                             Description = "There are almost 6,000 locations across the U.S.",
                             Locations = new List<Location>(),
                             Prices = "1200"
@@ -114,9 +184,10 @@ namespace DBProjekat.Models
                         {
                             Name = "National",
                             Address = "www.nationalcar.com",
-                            Cars = new List<Car>(),
+                            Cars = context.Cars.ToList(),
+                            CarBookings = new List<CarBooking>(),
                             Description = "A huge variety of vehicles to rent.",
-                            Locations = new List<Location>(),
+                            Locations = context.Locations.ToList(),
                             Prices = "1200"
 
                         },
@@ -126,6 +197,7 @@ namespace DBProjekat.Models
                             Name = "Alamo",
                             Address = "www.alamo.com",
                             Cars = new List<Car>(),
+                            CarBookings = new List<CarBooking>(),
                             Description = "A favorite with millennials.",
                             Locations = new List<Location>(),
                             Prices = "1200"
@@ -137,6 +209,7 @@ namespace DBProjekat.Models
                             Name = "Budget",
                             Address = "www.budget.com",
                             Cars = new List<Car>(),
+                            CarBookings = new List<CarBooking>(),
                             Description = "Some of the cheapest car rentals in the industry.",
                             Locations = new List<Location>(),
                             Prices = "1200"
@@ -148,6 +221,7 @@ namespace DBProjekat.Models
                             Name = "Avis",
                             Address = "www.avis.com",
                             Cars = new List<Car>(),
+                            CarBookings = new List<CarBooking>(),
                             Description = "Good for companies",
                             Locations = new List<Location>(),
                             Prices = "1200"
@@ -158,8 +232,7 @@ namespace DBProjekat.Models
                     );
                     
                 }
-
-               else if (!context.Users.Any())
+                if (!context.Users.Any())
                 {
                     context.Users.AddRange(
 
@@ -180,7 +253,7 @@ namespace DBProjekat.Models
                         
 
                     );
-                    context.SaveChanges();
+                    
                 }
                 context.SaveChanges();
             }

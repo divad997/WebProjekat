@@ -15,6 +15,7 @@ import { UserserviceService } from './services/userservice/userservice.service';
 import { BookflightComponent } from './bookflight/bookflight.component';
 import { NavComponent } from './nav/nav.component';
 import { AuthService } from './services/authservice/auth.service';
+import { BookcarComponent } from './bookcar/bookcar.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AuthService } from './services/authservice/auth.service';
     RentacardetailsComponent,
     BookflightComponent,
     NavComponent,
+    BookcarComponent,
     
   ],
   imports: [

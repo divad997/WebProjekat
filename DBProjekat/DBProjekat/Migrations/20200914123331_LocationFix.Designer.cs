@@ -4,14 +4,16 @@ using DBProjekat.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DBProjekat.Migrations
 {
     [DbContext(typeof(AgencyContext))]
-    partial class AgencyContextModelSnapshot : ModelSnapshot
+    [Migration("20200914123331_LocationFix")]
+    partial class LocationFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -319,7 +321,7 @@ namespace DBProjekat.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DBProjekat.Models.RentCompany", "RentCompany")
-                        .WithMany("CarBookings")
+                        .WithMany()
                         .HasForeignKey("RentCompanyId");
                 });
 

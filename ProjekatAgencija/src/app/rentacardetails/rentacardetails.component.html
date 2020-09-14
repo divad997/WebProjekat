@@ -1,3 +1,40 @@
-<div>
+<!--<div>
     <button  (click)="deleteRent()" style="position: relative;">Delete</button>
+</div>-->
+<h3 style="position: relative; color: #eff3f5;">{{Company.Name}}</h3>
+<p style="position: relative; color: #eff3f5;">{{Company.Description}}</p>
+<div class="limiter" style="position: relative;">
+  <div class="container-table100">
+      <div class="wrap-table100">
+              <div class="table">
+
+                  <div class="row header">
+                      <div class="cell">
+                          Name
+                      </div>
+                      <div class="cell">
+                          Daily Rate[$]
+                      </div>
+                      <div class="cell">
+                          Type
+                      </div>
+                  </div>
+
+                  <div class="row" *ngFor="let car of Company.Cars" routerLink="/rentacarlist/{{RCId}}/details/car/{{car.Id}}">
+                      <div class="cell" data-title="Rent Company">
+                          {{car.Name}}
+                      </div>
+                      <div class="cell" data-title="Address">
+                          {{car.DailyRate}}
+                      </div>
+                      <div class="cell" data-title="Rating">
+                          {{car.Type}}
+                      </div>
+                  </div>
+
+              </div>
+      </div>
+  </div>
 </div>
+
+
