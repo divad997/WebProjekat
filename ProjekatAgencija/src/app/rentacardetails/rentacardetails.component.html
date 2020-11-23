@@ -3,6 +3,9 @@
 </div>-->
 <h3 style="position: relative; color: #eff3f5;">{{Company.Name}}</h3>
 <p style="position: relative; color: #eff3f5;">{{Company.Description}}</p>
+<div style="position: relative;" *ngIf="admin == true">
+    <button mat-button (click)="deleteRent()" >Delete</button>
+</div>
 <div class="limiter" style="position: relative;">
   <div class="container-table100">
       <div class="wrap-table100">

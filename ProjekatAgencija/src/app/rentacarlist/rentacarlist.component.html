@@ -1,3 +1,27 @@
+<table style="position: relative;" border="1">
+    <tr>
+        <td></td>
+        <td>
+            <label>Location</label>
+        </td>          
+    </tr>
+    <tr>
+        <td>Search by Location</td>
+        <td>
+        <mat-form-field>
+            <select matNativeControl [(ngModel)]="tmp1" >
+                <option value=""></option>
+                <option *ngFor="let item of Locations" [value]="item.Location1">
+                  {{item.Location1}}
+                </option>
+              </select>
+        </mat-form-field>
+        </td>
+        <td colspan="2">
+            <button (click)="onSearchClick()">Search locations</button>
+        </td>
+    </tr>
+</table>
 <div class="limiter" style="position: relative;">
     <div class="container-table100">
         <div class="wrap-table100">

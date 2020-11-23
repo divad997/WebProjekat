@@ -6,6 +6,7 @@ import { User } from '../entities/user';
 import { ActivatedRoute } from '@angular/router';
 import { RentCompany } from '../entities/rentacar/rentacar';
 
+
 @Component({
   selector: 'app-rentacardetails',
   templateUrl: './rentacardetails.component.html',
@@ -16,16 +17,17 @@ export class RentacardetailsComponent implements OnInit {
   Company: RentCompany;
   RCId: number;
   admin: boolean;
-  
+  user: User;
 
   constructor(private carService: CarserviceService, private authService: AuthService, private userService: UserserviceService, route: ActivatedRoute) {
     route.params.subscribe(params => {this.RCId = params.id});
    }
 
-  user: User;
+  
 
   ngOnInit(): void {
     this.getRCById();
+    this.isAdmin();
   }
 
 
@@ -40,8 +42,11 @@ export class RentacardetailsComponent implements OnInit {
       (res: any) => {
         
         this.user = res;
-        if(this.user.Role == "Admin")
+        if(this.user.Role == "Admin"){
           this.admin = true;
+          console.log('Admin is logged in!')
+         
+        }
         else 
           this.admin = false;
       });

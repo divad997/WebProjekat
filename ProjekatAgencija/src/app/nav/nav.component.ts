@@ -33,8 +33,10 @@ export class NavComponent implements OnInit {
       (res: any) => {
         
         this.user = res;
-        if(this.user.Role == "Admin")
+        if(this.user.Role == "Admin"){
+          console.log('Admin is logged in!');
           return true;
+        }
         else 
           return false;
       });

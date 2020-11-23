@@ -177,5 +177,44 @@ namespace DBProjekat.Controllers
 
             return Ok();
         }
+
+        [Route("GetLocations")]
+        [HttpGet]
+        public IEnumerable<Location> GetLocations()
+        {
+            return _context.Locations;
+        }
+
+        [Route("SearchByLocation")]
+        [HttpPost]
+        public List<RentCompany> SearchByLocation(PostModel model)
+        {
+            List<RentCompany> rc = _context.RentCompanies.ToList();
+            List<Location> ll = _context.Locations.ToList();
+            //List<Rating> rl = _context.Rating.ToList();
+            
+
+            List<RentCompany> searchedRC = new List<RentCompany>();
+
+            foreach (var item in rc)
+            {
+                if (item.Locations == null)
+                {
+                    continue;
+                }
+                else
+                {
+                    foreach (var loc in item.Locations)
+                    {
+                        if (loc.Location1 == model.Location)
+                        {
+                            searchedRC.Add(item);
+                        }
+                    }
+                }
+            }
+
+            return searchedRC;
+        }
     }
 }

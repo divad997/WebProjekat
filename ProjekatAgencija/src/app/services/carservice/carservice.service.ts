@@ -53,5 +53,16 @@ export class CarserviceService {
 
     return this.http.post(this.url + '/RentCompanies/ReserveCar', idModel);
   }
+
+  getLocations() {
+    return this.http.get(this.url + '/RentCompanies/GetLocations');
+  }
   
+  searchByLocation(location: string)
+  {
+    var idModel = {
+      Location: location
+    }
+    return this.http.post(this.url + '/RentCompanies/SearchByLocation', idModel);
+  }
 }
